@@ -1,0 +1,29 @@
+.container {
+  display: grid;
+  place-content: center;
+}
+
+ul {
+  width: 560px;
+  aspect-ratio: 1;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  border-radius: 50%;
+  display: flex;
+  gap: 8px;
+}
+
+li {
+  transition: 0.2s;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  /* 色相を15ずつ変化させる */
+  background: oklch(80% 0.25 calc((sibling-index() - 1) * 15));
+  transform: translate(-50%, -50%) rotate(calc((sibling-index() - 1) * 15deg)) translateY(-260px);
+}

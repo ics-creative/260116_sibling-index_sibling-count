@@ -1,0 +1,29 @@
+.container {
+  display: grid;
+  place-content: center;
+}
+
+/* aタグ用リセットスタイル */
+a {
+  color: #000;
+  text-decoration: none;
+}
+
+.text-wrap {
+  display: flex;
+  gap: 8px;
+  font-size: 40px;
+}
+
+.text-wrap:hover .letter {
+  text-shadow: 0 0 0 #000, 0 1.5em 0 #000;
+
+}
+
+.letter {
+  overflow: hidden;
+  color: transparent;
+  text-shadow: 0 -1.2em 0 #000, 0 0 0 #000;
+  transition: text-shadow 0.3s;
+  transition-delay: calc(sibling-index() * 0.05s);
+}

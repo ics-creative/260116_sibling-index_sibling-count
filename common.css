@@ -1,0 +1,7 @@
+/* 共通スタイル */
+body {
+  padding: 100px;
+}
+.sr-only {
+  display: none;
+}

@@ -1,0 +1,97 @@
+.container {
+  padding-top: 80px;
+  display: grid;
+  place-content: center;
+}
+.hand{
+  list-style: none;
+  margin: 2rem auto;
+  padding: 0;
+  width: min(56rem, 92vw);
+  height: 18rem;
+  position: relative;
+  display: block;
+  border-radius: 18px;
+}
+
+.hand > .slot{
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+
+  /* 扇の中心から回転させる */
+  transform-origin: 50% 100%;
+
+  /*
+    -70deg 〜 +70deg の範囲に自動配分（合計 140deg）
+  */
+  transform:
+    translateX(-50%)
+    rotate(
+      calc(
+        -70deg +
+        (sibling-index() - 1) *
+        (140deg / max(1, calc(sibling-count() - 1)))
+      )
+    );
+}
+
+.card{
+  /* 扇の中心から半径ぶん持ち上げる（半円っぽさ） */
+  transform: translateY(-11.5rem);
+  transform-origin: 50% 100%;
+
+  width: 9.5rem;
+  height: 13rem;
+  border-radius: 16px;
+
+  display: block;
+  position: relative;
+  cursor: pointer;
+
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+  outline: none;
+ 
+}
+
+/* ホバー（またはキーボードフォーカス）で少し上に飛び出して前面へ */
+.slot:hover{ z-index: 9999; }
+.card:hover,
+.card:focus-visible{
+  transform: translateY(-13rem) scale(1.04);
+  box-shadow: 0 18px 40px rgba(0,0,0,.20);
+}
+
+/* クリック済みでもホバーしたらちょい強調（任意） */
+.card.is-flipped:hover,
+.card.is-flipped:focus-visible{
+  filter: saturate(1.1);
+}
+
+/* 表裏 */
+.face{
+  position: absolute;
+  inset: 0;
+  padding: 1rem 1.1rem;
+  place-content: center;
+  align-content: start;
+  gap: .4rem;
+
+  backface-visibility: hidden;
+  transition: transform 0.6s;
+  border-radius: 16px;
+
+  border: 1px solid rgba(0,0,0,.12);
+  background: #fff;
+  display: grid;
+
+  font-size: 40px;
+}
+
+.front{
+  transform: none;
+}
+
+
