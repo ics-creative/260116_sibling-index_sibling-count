@@ -2,7 +2,7 @@
   display: grid;
   place-content: center;
 }
-.date-list {
+ul {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -13,23 +13,10 @@
 li {
   background: hsl(200deg calc(100% - (sibling-index() - 1) * 15%) 60%);
   border-radius: 14px;
-  animation: fadeIn 0.3s;
-  animation-delay: calc(sibling-index() * 0.1s);
-  opacity: 0;
 }
 
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 
-.date-list > li > a {
+a {
   display: grid;
   grid-template-columns: 9.5em 1fr;
   align-items: center;
@@ -39,24 +26,6 @@ li {
   text-decoration: none;
   color: #fff;
   border-radius: 14px;
-
-
-}
-
-.date-list > li:hover,
-.date-list > li:focus-visible {
-  transform: translateY(-2px);
-  filter: saturate(1.06);
-  outline: none;
-}
-
-.date-list time {
-  font-variant-numeric: tabular-nums;
-  font-weight: 650;
-}
-
-.date-list span {
-  opacity: .85;
 }
 
 
