@@ -10,49 +10,61 @@
   </head>
   <body>
     <div class="container">
-      <ul class="hand" aria-label="Playing cards">
-        <li class="slot">
-          <div class="card">
-            <span class="face front"> A </span>
-          </div>
+      <ul>
+        <li>
+          <span class="card-label">1</span>
+          <button class="card-remove" type="button" aria-label="Aを削除">
+            ×
+          </button>
         </li>
-
-        <li class="slot">
-          <div class="card">
-            <span class="face front"> B </span>
-          </div>
+        <li>
+          <span class="card-label">2</span>
+          <button class="card-remove" type="button" aria-label="Bを削除">
+            ×
+          </button>
         </li>
-
-        <li class="slot">
-          <div class="card">
-            <span class="face front"> C </span>
-          </div>
+        <li>
+          <span class="card-label">3</span>
+          <button class="card-remove" type="button" aria-label="Cを削除">
+            ×
+          </button>
         </li>
-
-        <li class="slot">
-          <div class="card">
-            <span class="face front"> D </span>
-          </div>
+        <li>
+          <span class="card-label">4</span>
+          <button class="card-remove" type="button" aria-label="Dを削除">
+            ×
+          </button>
         </li>
-
-        <li class="slot">
-          <div class="card">
-            <span class="face front"> E </span>
-          </div>
+        <li>
+          <span class="card-label">5</span>
+          <button class="card-remove" type="button" aria-label="Eを削除">
+            ×
+          </button>
         </li>
-
-        <li class="slot">
-          <div class="card">
-            <span class="face front"> F </span>
-          </div>
+        <li>
+          <span class="card-label">6</span>
+          <button class="card-remove" type="button" aria-label="Fを削除">
+            ×
+          </button>
         </li>
-
-        <li class="slot">
-          <div class="card">
-            <span class="face front"> G </span>
-          </div>
+        <li>
+          <span class="card-label">7</span>
+          <button class="card-remove" type="button" aria-label="Gを削除">
+            ×
+          </button>
         </li>
       </ul>
     </div>
+
+    <!-- 削除ボタンを押下したらカード削除 -->
+    <script>
+      const list = document.querySelector("ul");
+      list?.addEventListener("click", (event) => {
+        const button = event.target.closest(".card-remove");
+        if (!button) return;
+        const item = button.closest("li");
+        if (item) item.remove();
+      });
+    </script>
   </body>
 </html>
