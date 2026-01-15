@@ -13,7 +13,7 @@
 li {
   background: hsl(200deg calc(100% - (sibling-index() - 1) * 15%) 60%);
   border-radius: 14px;
-  animation: fadeIn 0.3s ease-out forwards;
+  animation: fadeIn 0.3s;
   animation-delay: calc(sibling-index() * 0.1s);
   opacity: 0;
 }

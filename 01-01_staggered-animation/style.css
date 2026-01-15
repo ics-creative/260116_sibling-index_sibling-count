@@ -1,78 +1,61 @@
-.container {
-  /* display: grid;
-  place-content: center; */
-}
-.stagger-cards{
-  list-style:none;
-  padding:0;
-  margin:0;
-  display:grid;
-  gap:12px;
-  width:100%;
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 12px;
+  width: 100%;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
 }
 
-/* 最終形（整列した状態） */
-.stagger-cards > .card{
-  border:1px solid #ddd;
-  border-radius:16px;
-  background:#e0d8ff;
-
-  display:flex;
+/* 最終形スタイル（整列した状態） */
+li {
+  border-radius: 16px;
+  background: skyblue;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   aspect-ratio: 1 / 1;
-
   opacity: 1;
-  transform: translate3d(0,0,0) rotate(0deg);
+  transform: translate3d(0, 0, 0) rotate(0deg);
   filter: blur(0px);
-
+  transition: opacity 0.4s, transform 0.4s, filter 0.4s;
   /* sibling-index() でスタッガー */
-  transition-property: opacity, transform, filter;
-  transition-duration: 0.4s;
-  transition-delay: calc((sibling-index() - 1) * 0.07s);
+  transition-delay: calc((sibling-index() - 1) * 0.05s);
 }
 
-/* ここが肝：初回表示時の開始スタイル（バラバラ状態） */
-@starting-style{
-  .stagger-cards > .card{
-    /* indexで “ズレ量/回転量” を少しずつ変える */
-    --i: sibling-index();
-
+/* 初回表示時の開始スタイル */
+@starting-style {
+  li {
+    --index: sibling-index();
 
     /* 横方向のずれ量 */
-    --offset-x: calc((var(--i) - 1) * 10px);
+    --offset-x: calc((var(--index) - 1) * 10px);
 
     /* 縦方向のずれ量（少し下にずらす） */
-    --offset-y: calc(4px + (var(--i) - 1) * 3px);
+    --offset-y: calc(4px + (var(--index) - 1) * 3px);
 
     /* 回転量（度数） */
-    --rotate-deg: calc((var(--i) - 1) * 1.1deg);
+    --rotate-deg: calc((var(--index) - 1) * 1.2deg);
 
     opacity: 0;
-
-    transform:
-      translateX(var(--offset-x))
-      translateY(var(--offset-y))
+    transform: translateX(var(--offset-x)) translateY(var(--offset-y))
       rotate(var(--rotate-deg));
     filter: blur(6px);
   }
 }
 
-.stagger-cards > .card h3{
-  margin:0;
-  font-size: 16px;
-}
-.stagger-cards > .card p{
-  margin:6px 0 0;
-  opacity:.75;
-}
+/* 前のページに戻るリンク */
+.link {
+  display: inline-block;
+  margin-top: 80px;
+  color: darkgray;
+  text-decoration: none;
+  transition: color 0.2s;
+  font-size: 14px;
 
-/* アクセシビリティ：動きを減らす設定の人には即表示 */
-@media (prefers-reduced-motion: reduce){
-  .stagger-cards > .card{
-    transition: none;
+  &:hover {
+    color: #6f6f6f;
   }
 }
