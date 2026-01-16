@@ -25,5 +25,19 @@ li {
   border-radius: 50%;
   /* 色相を15ずつ変化させる */
   background: oklch(80% 0.25 calc((sibling-index() - 1) * 15));
-  transform: translate(-50%, -50%) rotate(calc((sibling-index() - 1) * 15deg)) translateY(-260px);
+  transform: translate(-50%, -50%) rotate(calc((sibling-index() - 1) * 15deg))
+    translateY(-240px);
+}
+
+@media (max-width: 640px) {
+  ul {
+    width: 320px;
+  }
+
+  li {
+    width: 36px;
+    height: 36px;
+    transform: translate(-50%, -50%) rotate(calc((sibling-index() - 1) * 15deg))
+      translateY(-140px);
+  }
 }

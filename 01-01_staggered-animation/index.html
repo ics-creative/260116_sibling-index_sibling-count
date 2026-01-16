@@ -9,8 +9,12 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <div>
-      <ul>
+    <main class="container">
+      <button class="replay-button" type="button">
+        スタッガーアニメーションを再生
+      </button>
+      
+      <ul class="cards">
         <li></li>
         <li></li>
         <li></li>
@@ -30,8 +34,23 @@
         <li></li>
         <li></li>
       </ul>
-    </div>
+    </main>
 
-    <a href="./start.html" class="link">前のページに戻る</a>
+
+    <script>
+      const list = document.querySelector(".cards");
+      const replayButton = document.querySelector(".replay-button");
+
+      const replayAnimation = () => {
+        list.classList.add("is-reset");
+        list.getBoundingClientRect();
+        requestAnimationFrame(() => {
+          list.classList.remove("is-reset");
+        });
+      };
+
+      window.addEventListener("load", replayAnimation);
+      replayButton.addEventListener("click", replayAnimation);
+    </script>
   </body>
 </html>
