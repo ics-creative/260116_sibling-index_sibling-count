@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>04_deck-of-cards</title>
+    <title>03_deck-of-cards</title>
 
     <link rel="stylesheet" href="../common.css" />
     <link rel="stylesheet" href="./style.css" />
@@ -13,43 +13,43 @@
       <ul>
         <li>
           <span class="card-label">1</span>
-          <button class="card-remove" type="button" aria-label="Aを削除">
+          <button class="card-remove" type="button">
             ×
           </button>
         </li>
         <li>
           <span class="card-label">2</span>
-          <button class="card-remove" type="button" aria-label="Bを削除">
+          <button class="card-remove" type="button">
             ×
           </button>
         </li>
         <li>
           <span class="card-label">3</span>
-          <button class="card-remove" type="button" aria-label="Cを削除">
+          <button class="card-remove" type="button">
             ×
           </button>
         </li>
         <li>
           <span class="card-label">4</span>
-          <button class="card-remove" type="button" aria-label="Dを削除">
+          <button class="card-remove" type="button">
             ×
           </button>
         </li>
         <li>
           <span class="card-label">5</span>
-          <button class="card-remove" type="button" aria-label="Eを削除">
+          <button class="card-remove" type="button">
             ×
           </button>
         </li>
         <li>
           <span class="card-label">6</span>
-          <button class="card-remove" type="button" aria-label="Fを削除">
+          <button class="card-remove" type="button">
             ×
           </button>
         </li>
         <li>
           <span class="card-label">7</span>
-          <button class="card-remove" type="button" aria-label="Gを削除">
+          <button class="card-remove" type="button">
             ×
           </button>
         </li>
@@ -58,12 +58,12 @@
 
     <!-- 削除ボタンを押下したらカード削除 -->
     <script>
-      const list = document.querySelector("ul");
-      list?.addEventListener("click", (event) => {
-        const button = event.target.closest(".card-remove");
-        if (!button) return;
-        const item = button.closest("li");
-        if (item) item.remove();
+      const buttons = document.querySelectorAll(".card-remove");
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const item = button.closest("li");
+          if (item) item.remove();
+        });
       });
     </script>
   </body>
