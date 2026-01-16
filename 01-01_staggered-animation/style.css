@@ -29,7 +29,6 @@ li {
   aspect-ratio: 1 / 1;
   opacity: 1;
   transform: rotate(0deg);
-  filter: blur(0px);
   transition: opacity 0.4s, transform 0.4s;
 
   /* sibling-index() でスタッガー */
