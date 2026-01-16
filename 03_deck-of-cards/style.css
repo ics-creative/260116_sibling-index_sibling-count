@@ -1,9 +1,10 @@
 .container {
-  padding-top: 80px;
   display: grid;
   place-content: center;
   height: 100vh;
 }
+
+
 
 ul {
   position: relative;
@@ -34,7 +35,7 @@ li {
   place-content: center;
   font-size: 40px;
   background: #fff;
-  border: 1px solid rgba(0,0,0,.12);
+  border: 1px solid #b6b6b6;
   outline: none;
 }
 
@@ -84,6 +85,44 @@ li:hover {
     background: #f0f0f0;
   }
 }
+
+@media (max-width: 600px) {
+  body {
+    padding: 0px;
+  }
+  ul {
+    width: 320px;
+    height: 320px;
+    margin: 0 auto;
+    transform: rotate(90deg);
+    transform-origin: 50% 50%;
+  }
+
+  li {
+    transform:
+    translateX(-50%)
+    rotate(
+      calc(
+        (sibling-index() - (sibling-count() + 1) / 2) * 20deg
+      )
+    )
+    translateY(-160px)
+  }
+
+  li:hover {
+    transform:
+    translateX(-50%)
+    rotate(
+      calc(
+        (sibling-index() - (sibling-count() + 1) / 2) * 20deg
+      )
+    )
+    translateY(-180px)
+    scale(1.05)
+  }
+}
+
+
 
 li:hover .card-remove,
 li:focus-within .card-remove,
